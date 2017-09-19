@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.canking.minipay">
+
+    <application>
+        <activity
+            android:name=".ZhiActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/PayTheme" />
+    </application>
+
+</manifest>
