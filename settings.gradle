@@ -1,1 +1,2 @@
-include ':app', ':minipay'
+include ':app'
+//include ':minipay'
