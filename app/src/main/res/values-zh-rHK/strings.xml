@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">无SDK支付</string>
+    <string name="app_name">免sdk支付</string>
     <string name="guide">此项目为免sdk支付系统，直接调起支付宝或微信，为个人开发者打赏提供便利服务。</string>
-    <string name="test_btn">捐赠</string>
+    <string name="test_btn">捐贈</string>
 </resources>

@@ -23,8 +23,8 @@ import java.io.OutputStream;
  */
 
 public class WeZhi {
-    public static void startWeZhi(Context c, View view) {
-        File dir = c.getExternalFilesDir("file_img");
+    /*package*/ static void startWeZhi(Context c, View view) {
+        File dir = c.getExternalFilesDir("pay_img");
         if (dir != null &&
                 !dir.exists() && !dir.mkdirs()) {
             return;
@@ -44,7 +44,7 @@ public class WeZhi {
         }
     }
 
-    public static void snapShot(Context context, @NonNull File file, @NonNull View view) {
+    private static void snapShot(Context context, @NonNull File file, @NonNull View view) {
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas();
         canvas.setBitmap(bitmap);
@@ -61,7 +61,7 @@ public class WeZhi {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Utils.closeIO(fos);
+            MiniPayUtils.closeIO(fos);
         }
         if (isSuccess) {
             ContentResolver contentResolver = context.getContentResolver();
@@ -70,7 +70,7 @@ public class WeZhi {
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
             values.put(MediaStore.Images.Media.ORIENTATION, 0);
             values.put(MediaStore.Images.Media.TITLE, "捐赠");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "充电助手捐赠二维码");
+            values.put(MediaStore.Images.Media.DESCRIPTION, "捐赠二维码");
             values.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
             Uri url = null;
 
@@ -80,7 +80,7 @@ public class WeZhi {
                 try {
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageOut);
                 } finally {
-                    Utils.closeIO(imageOut);
+                    MiniPayUtils.closeIO(imageOut);
                 }
 
                 long id = ContentUris.parseId(url);
@@ -94,14 +94,14 @@ public class WeZhi {
         }
     }
 
-    public static void startWechat(Context c) {
+    /*package*/ static void startWechat(Context c) {
         Intent intent = new Intent();
         ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setComponent(cmp);
-        if (Utils.isActivityAvailable(c, intent)) {
+        if (MiniPayUtils.isActivityAvailable(c, intent)) {
             c.startActivity(intent);
         } else {
             Toast.makeText(c, "未安装微信～", Toast.LENGTH_SHORT).show();

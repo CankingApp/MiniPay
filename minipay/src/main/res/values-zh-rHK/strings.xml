@@ -1,0 +1,6 @@
+<resources>
+    <string name="wei_zhi_title">捐贈·微信</string>
+    <string name="wei_zhi_tip">微信掃壹掃，或者點擊\"去捐贈\"，在微信頁面右上角菜單中 \"從相冊中選取二維碼\"。</string>
+    <string name="ali_zhi_title">捐贈·支付寶</string>
+    <string name="ali_zhi_tip">支付寶掃壹掃，或者點擊\"去捐贈\"\n您點滴支持，是我們最大動力</string>
+</resources>

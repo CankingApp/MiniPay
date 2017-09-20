@@ -36,8 +36,7 @@
             android:layout_height="156dp"
             android:layout_gravity="center_horizontal|center"
             android:clickable="false"
-            android:focusable="false"
-            android:src="@drawable/ic_weixin" />
+            android:focusable="false" />
 
     </LinearLayout>
 

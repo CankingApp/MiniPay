@@ -35,7 +35,7 @@ public class AliZhi {
      * @param urlCode 手动解析二维码获得地址中的参数，例如 https://qr.alipay.com/aehvyvf4taua18zo6e 最后那段
      * @return 是否成功调用
      */
-    public static boolean startAlipayClient(Activity activity, String urlCode) {
+    /*package*/ static boolean startAlipayClient(Activity activity, String urlCode) {
         return startIntentUrl(activity, INTENT_URL_FORMAT.replace("{urlCode}", urlCode));
     }
 

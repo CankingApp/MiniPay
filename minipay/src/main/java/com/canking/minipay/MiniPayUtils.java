@@ -13,7 +13,9 @@ import java.util.List;
  * Created by changxing on 2017/9/19.
  */
 
-public class Utils {
+public class MiniPayUtils {
+    static final String EXTRA_KEY_PAY_CONFIG = "pay_config";
+
     /*package*/
     static void closeIO(Closeable target) {
         try {
@@ -33,5 +35,11 @@ public class Utils {
         List<ResolveInfo> list = pm.queryIntentActivities(
                 intent, PackageManager.MATCH_DEFAULT_ONLY);
         return list != null && list.size() > 0;
+    }
+
+    public static void setupPay(Context cxt, Config config) {
+        Intent i = new Intent(cxt, ZhiActivity.class);
+        i.putExtra(EXTRA_KEY_PAY_CONFIG, config);
+        cxt.startActivity(i);
     }
 }
