@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">无SDK支付</string>
-    <string name="guide">此项目为免sdk支付系统，直接调起支付宝或微信，为个人开发者打赏提供便利服务。</string>
+    <string name="guide">此项目为免sdk支付系统，直接调起支付宝或微信，为个人开发者打赏提供便利服务。
+        \n * 一行代码引入项目 compile "com.canking.minipay:minipay:1.0.2"
+        \n * 一行代码即可调起MiniPay：MiniPayUtils.setupPay(this, config);
+        \n * 需要提供目标账号支付宝，微信的转账二维码，及支付宝二维码后缀字符 如：（https://qr.alipay.com/apafm3kp91df7yo517中的apafm3kp91df7yo517）
+
+    </string>
     <string name="test_btn">捐赠</string>
 </resources>

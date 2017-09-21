@@ -23,25 +23,27 @@ import java.io.OutputStream;
  */
 
 public class WeZhi {
-    /*package*/ static void startWeZhi(Context c, View view) {
+    /*package*/
+    static void startWeZhi(Context c, View view) {
         File dir = c.getExternalFilesDir("pay_img");
         if (dir != null &&
                 !dir.exists() && !dir.mkdirs()) {
             return;
-        }
-        String fileName = "weixin_qa.png";
-        File file = new File(dir, fileName);
-
-        if (!file.exists()) {
-            snapShot(c, file, view);
         } else {
-            try {
-                file.setLastModified(System.currentTimeMillis());
-            } catch (Exception e) {
-                e.printStackTrace();
+            File[] f = dir.listFiles();
+            for (File file : f) {
+                file.delete();
             }
-            startWechat(c);
         }
+
+        String fileName = System.currentTimeMillis() + "weixin_qa.png";
+        File file = new File(dir, fileName);
+        if (!file.exists()) {
+            file.delete();
+        }
+
+        snapShot(c, file, view);
+        startWechat(c);
     }
 
     private static void snapShot(Context context, @NonNull File file, @NonNull View view) {
@@ -72,6 +74,7 @@ public class WeZhi {
             values.put(MediaStore.Images.Media.TITLE, "捐赠");
             values.put(MediaStore.Images.Media.DESCRIPTION, "捐赠二维码");
             values.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
+            values.put(MediaStore.Images.Media.DATE_MODIFIED,System.currentTimeMillis()/1000);
             Uri url = null;
 
             try {
@@ -94,13 +97,13 @@ public class WeZhi {
         }
     }
 
-    /*package*/ static void startWechat(Context c) {
+    /*package*/
+    private static void startWechat(Context c) {
         Intent intent = new Intent();
-        ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
-        intent.setAction(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setComponent(cmp);
+        intent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI"));
+        intent.putExtra("LauncherUI.From.Scaner.Shortcut", true);
+        intent.setFlags(335544320);
+        intent.setAction("android.intent.action.VIEW");
         if (MiniPayUtils.isActivityAvailable(c, intent)) {
             c.startActivity(intent);
         } else {
