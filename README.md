@@ -13,7 +13,7 @@
 
 ## 预览
 
-![home](https://github.com/CankingApp/MiniPay/blob/lib/snapshot/home.png)![wechat](https://github.com/CankingApp/MiniPay/blob/lib/snapshot/weixin.png)![ali](https://github.com/CankingApp/MiniPay/blob/lib/snapshot/ali.png)
+![home](https://github.com/CankingApp/MiniPay/blob/master/snapshot/home.png)![wechat](https://github.com/CankingApp/MiniPay/blob/master/snapshot/weixin.png)![ali](https://github.com/CankingApp/MiniPay/blob/master/snapshot/ali.png)
 
 ## 用法
 
