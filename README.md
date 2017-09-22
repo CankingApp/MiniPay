@@ -13,6 +13,8 @@
 
 ## 预览
 
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.canking.paydemo)
+
 ![home](https://github.com/CankingApp/MiniPay/blob/master/snapshot/home.png)![wechat](https://github.com/CankingApp/MiniPay/blob/master/snapshot/weixin.png)![ali](https://github.com/CankingApp/MiniPay/blob/master/snapshot/ali.png)
 
 ## 用法
