@@ -24,13 +24,13 @@
 ### 基本配置准备
 * 支付宝和微信二维码
 * 解析支付宝二维码内容后缀字符（直接转账用）
-* 引入MimiPay项目
+* 引入MimiPay项目 
 
 ### 添加项目引用Dependency
 
 ```
     dependencies {
-	    compile 'com.sdsmdg.tastytoast:tastytoast:0.1.3'
+	    compile 'com.canking.minipay:minipay:1.0.2'
     }
 ```
 
