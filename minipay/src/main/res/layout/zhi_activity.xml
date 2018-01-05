@@ -18,6 +18,19 @@
         android:paddingTop="42dp">
 
         <TextView
+            android:id="@+id/tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/act_switch"
+            android:textColor="#F5F5F5"
+            android:textSize="12dp" />
+
+        <TextView
             android:id="@+id/zhi_title"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -29,6 +42,7 @@
             android:text="@string/wei_zhi_title"
             android:textColor="#ffffff"
             android:textSize="32dp" />
+
 
         <ImageView
             android:id="@+id/qa_image_view"

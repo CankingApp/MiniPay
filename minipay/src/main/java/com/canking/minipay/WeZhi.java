@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -18,13 +20,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
+import static android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+
 /**
  * Created by changxing on 2017/9/8.
  */
 
 public class WeZhi {
     /*package*/
-    static void startWeZhi(Context c, View view) {
+    static void startWeZhi(final Context c, final View view) {
         File dir = c.getExternalFilesDir("pay_img");
         if (dir != null &&
                 !dir.exists() && !dir.mkdirs()) {
@@ -37,13 +41,33 @@ public class WeZhi {
         }
 
         String fileName = System.currentTimeMillis() + "weixin_qa.png";
-        File file = new File(dir, fileName);
-        if (!file.exists()) {
-            file.delete();
-        }
+        final File file = new File(dir, fileName);
+//        if (!file.exists()) {
+//            file.delete();
+//        }
 
-        snapShot(c, file, view);
-        startWechat(c);
+        new AsyncTask<Context, String, String>() {
+            Context context;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                Toast.makeText(c, R.string.wei_loading, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(Context... c) {
+                context = c[0];
+                snapShot(context, file, view);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                startWechat(context);
+            }
+        }.execute(c);
     }
 
     private static void snapShot(Context context, @NonNull File file, @NonNull View view) {
@@ -71,13 +95,16 @@ public class WeZhi {
             values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
             values.put(MediaStore.Images.Media.ORIENTATION, 0);
-            values.put(MediaStore.Images.Media.TITLE, "捐赠");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "捐赠二维码");
+            values.put(MediaStore.Images.Media.TITLE, context.getString(R.string.donate));
+            values.put(MediaStore.Images.Media.DESCRIPTION, context.getString(R.string.donate_qa));
             values.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
-            values.put(MediaStore.Images.Media.DATE_MODIFIED,System.currentTimeMillis()/1000);
+            values.put(MediaStore.Images.Media.DATE_MODIFIED, System.currentTimeMillis() / 1000);
             Uri url = null;
 
             try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    context.grantUriPermission(context.getPackageName(), MediaStore.Images.Media.EXTERNAL_CONTENT_URI, FLAG_GRANT_WRITE_URI_PERMISSION);
+                }
                 url = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values); //其实质是返回 Image.Meida.DATA中图片路径path的转变而成的uri
                 OutputStream imageOut = contentResolver.openOutputStream(url);
                 try {

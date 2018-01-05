@@ -3,4 +3,8 @@
     <string name="wei_zhi_tip">微信扫一扫，或者点击\"去捐赠\"，在微信页面右上角菜单中 \"从相册中选取二维码\"。</string>
     <string name="ali_zhi_title">捐赠·支付宝</string>
     <string name="ali_zhi_tip">支付宝扫一扫，或者点击\"去捐赠\"\n您点滴支持，是我们最大动力</string>
+    <string name="wei_loading">启动中...</string>
+    <string name="act_switch">点击任何地方切换捐赠方式</string>
+    <string name="donate">捐赠</string>
+    <string name="donate_qa">捐赠二维码</string>
 </resources>

@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.canking.minipay">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application>
         <activity
             android:name=".ZhiActivity"
@@ -8,6 +10,7 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/PayTheme" />
+
     </application>
 
 </manifest>

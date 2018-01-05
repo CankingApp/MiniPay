@@ -3,4 +3,8 @@
     <string name="wei_zhi_tip">微信掃壹掃，或者點擊\"去捐贈\"，在微信頁面右上角菜單中 \"從相冊中選取二維碼\"。</string>
     <string name="ali_zhi_title">捐贈·支付寶</string>
     <string name="ali_zhi_tip">支付寶掃壹掃，或者點擊\"去捐贈\"\n您點滴支持，是我們最大動力</string>
+    <string name="wei_loading">啟動中...</string>
+    <string name="donate">捐赠</string>
+    <string name="donate_qa">捐贈二維碼</string>
+    <string name="act_switch">點擊任何地方切換捐贈方式</string>
 </resources>

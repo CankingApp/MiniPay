@@ -1,11 +1,14 @@
 package com.canking.minipay;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +17,7 @@ import android.widget.TextView;
  */
 
 public class ZhiActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView mTitleTv, mSummeryTv;
+    private TextView mTitleTv, mSummeryTv, mTip;
     private static final int ZHI_WAY_WECHAT = 0;//weixin
     private int mZhiWay;
     private ViewGroup mQaView, mZhiBg;
@@ -42,6 +45,7 @@ public class ZhiActivity extends AppCompatActivity implements View.OnClickListen
         mQaView = (ViewGroup) findViewById(R.id.qa_layout);
         mZhiBg = (ViewGroup) findViewById(R.id.zhi_bg);
         mQaImage = (ImageView) findViewById(R.id.qa_image_view);
+        mTip = (TextView) findViewById(R.id.tip);
         mZhiBg.setOnClickListener(this);
     }
 
@@ -56,14 +60,21 @@ public class ZhiActivity extends AppCompatActivity implements View.OnClickListen
         if (!checkLegal()) {
             throw new IllegalStateException("MiniPay Config illegal!!!");
         } else {
-            if(TextUtils.isEmpty(wechatTip)) wechatTip = getString(R.string.wei_zhi_tip);
-            if(TextUtils.isEmpty(aliTip)) aliTip = getString(R.string.ali_zhi_tip);
+            if (TextUtils.isEmpty(wechatTip)) wechatTip = getString(R.string.wei_zhi_tip);
+            if (TextUtils.isEmpty(aliTip)) aliTip = getString(R.string.ali_zhi_tip);
 
             mZhiBg.setBackgroundResource(R.drawable.common_bg);
             mTitleTv.setText(R.string.wei_zhi_title);
             mSummeryTv.setText(wechatTip);
             mQaImage.setImageResource(wechatQaImage);
         }
+
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mTip, "alpha", 0, 0.66f, 1.0f, 0);
+        animator.setDuration(2888);
+        animator.setRepeatCount(6);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+        animator.start();
     }
 
 

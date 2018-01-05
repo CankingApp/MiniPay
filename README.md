@@ -41,6 +41,20 @@
     MiniPayUtils.setupPay(this, config);
 ```
 
+### Release Note
+
+* v1.0.0:实现基本项目功能
+* v1.0.1:优化微信捐赠方式二维码保存
+* v1.0.2:
+        1.抽出捐赠sdk，上传Bintray。
+        2.优化Demo UI。
+* v1.0.3:
+        1.Demo上传Google Play
+        2.发布项目技术细节博客
+* v1.0.5:
+        1.修改安卓N手机微信二维码保存逻辑。
+        2.优化捐赠方式提醒。
+
 ## License
 
 * [Apache Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
